@@ -1,0 +1,7 @@
+- name: Scan Docker Image with Trivy
+  uses: aquasecurity/trivy-action@master
+  with:
+    image-ref: littlebite2/react-app:latest
+    format: table
+    exit-code: 1
+    severity: CRITICAL,HIGH

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jaeger
+  labels:
+    app: jaeger
+spec:
+  containers:
+    - name: jaeger
+      image: jaegertracing/all-in-one:latest
+      ports:
+        - containerPort: 16686
+        - containerPort: 14268
