@@ -1,70 +1,229 @@
-# Getting Started with Create React App
+# 🚀 Full Stack DevOps Capstone Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## 📌 Overview
 
-### `npm start`
+This project demonstrates a complete **end-to-end DevOps lifecycle** including infrastructure provisioning, containerization, CI/CD automation, monitoring, logging, tracing, security, backup, and cost optimization.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🏗️ Architecture
 
-### `npm test`
+```
+Developer → GitHub → CI/CD Pipeline → Docker → Kubernetes Cluster
+                                      ↓
+                               Monitoring (Prometheus + Grafana)
+                                      ↓
+                         Logging (Loki + Promtail)
+                                      ↓
+                           Tracing (Jaeger)
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📁 Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+last/
+ ├── README.md
+ ├── infra/                 # Terraform configurations
+ └── react-k8s-app/
+      ├── k8s/              # Kubernetes manifests (Deployment, Service, HPA)
+      │    └── app/
+      ├── monitoring/       # Prometheus, Grafana, Loki, Promtail, Jaeger
+      └── pipelines/        # CI/CD pipelines (GitHub Actions)
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ⚙️ Tech Stack
 
-### `npm run eject`
+| Category         | Tools                        |
+| ---------------- | ---------------------------- |
+| Infrastructure   | Terraform                    |
+| Containerization | Docker                       |
+| Orchestration    | Kubernetes                   |
+| CI/CD            | GitHub Actions               |
+| Monitoring       | Prometheus, Grafana          |
+| Logging          | Loki, Promtail               |
+| Tracing          | Jaeger                       |
+| Security         | IAM, Trivy, Network Policies |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🚀 Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 🏗️ Infrastructure Provisioning
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* Provisioned infrastructure using Terraform
+* Configured virtual network, subnets, and security groups
+* Deployed Kubernetes cluster
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 🐳 Containerization & Orchestration
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Dockerized React web application
+* Deployed containers to Kubernetes
+* Configured Deployment, Service, and Ingress
+* Implemented Horizontal Pod Autoscaler (HPA)
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### ⚙️ CI/CD Pipeline
 
-### Analyzing the Bundle Size
+* Automated build and deployment using GitHub Actions
+* Docker image build and push to registry
+* Integrated vulnerability scanning using Trivy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+### 📊 Monitoring & Observability
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* Prometheus for metrics collection
+* Grafana dashboards for visualization
+* Alert rules configured
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 🔐 Security & Compliance
 
-### Deployment
+* IAM roles with least-privilege access
+* Kubernetes Secrets for sensitive data
+* Network Policies for traffic control
+* Encryption at rest and in transit
+* Container image scanning using Trivy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+### 📜 Logging & Tracing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Centralized logging using Loki and Promtail
+* Log visualization in Grafana
+* Distributed tracing using Jaeger
+
+---
+
+### 💾 Backup & Recovery
+
+* Backup using Kubernetes YAML exports:
+
+  ```
+  kubectl get all -o yaml > backup.yaml
+  kubectl get secrets -o yaml > secrets-backup.yaml
+  ```
+* Simulated failure and restored application
+* Verified successful recovery
+
+---
+
+### 💰 Cost Optimization
+
+* Analyzed usage using:
+
+  ```
+  kubectl top pods
+  ```
+* Implemented:
+
+  * Resource right-sizing (CPU & memory)
+  * Horizontal Pod Autoscaling (HPA)
+  * Reduced replica count
+
+---
+
+## 🧪 How to Run
+
+### 1️⃣ Clone Repository
+
+```
+git clone <your-repo-url>
+cd last
+```
+
+---
+
+### 2️⃣ Deploy Application
+
+```
+kubectl apply -f react-k8s-app/k8s/app/
+```
+
+---
+
+### 3️⃣ Deploy Monitoring Stack
+
+```
+kubectl apply -f react-k8s-app/monitoring/
+```
+
+---
+
+### 4️⃣ Verify Deployment
+
+```
+kubectl get pods
+```
+
+---
+
+## 📊 Useful Commands
+
+```
+kubectl get pods
+kubectl describe pod <pod-name>
+kubectl logs <pod-name>
+kubectl top pods
+```
+
+---
+
+## 🔍 Observability Access
+
+| Tool    | URL                    |
+| ------- | ---------------------- |
+| Grafana | http://localhost:3000  |
+| Jaeger  | http://localhost:16686 |
+
+---
+
+## 🎯 Key Achievements
+
+* End-to-end DevOps pipeline implementation
+* Automated CI/CD workflow
+* Scalable Kubernetes deployment
+* Secure and compliant infrastructure
+* Full observability (metrics, logs, tracing)
+* Backup and recovery strategy
+* Cost-efficient resource usage
+
+---
+
+## 🧠 Learnings
+
+* Infrastructure as Code (Terraform)
+* Kubernetes deployment and scaling
+* CI/CD automation
+* Monitoring and logging tools
+* Security best practices
+
+---
+
+## 🚀 Future Improvements
+
+* Implement HTTPS with TLS certificates
+* Deploy on managed Kubernetes (EKS/GKE/AKS)
+* Add Service Mesh (Istio/Linkerd)
+* Integrate Slack/Email alerts
+* Use Velero for automated backups
+
+---
+
+## 👨‍💻 Author
+
+**Sanket Bhal**
+
+---
+
+⭐ If you like this project, give it a star!
