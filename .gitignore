@@ -6,3 +6,7 @@ dist/
 *.tfstate
 *.tfstate.backup
 kubeconfig
+last.pem
+values.yaml
+secrets.yaml
+alert.yaml
