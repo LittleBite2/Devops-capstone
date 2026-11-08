@@ -2,9 +2,9 @@ alertmanager:
   config:
     global:
       smtp_smarthost: 'smtp.gmail.com:587'
-      smtp_from: 'bsanket790@gmail.com'
-      smtp_auth_username: 'bsanket790@gmail.com'
-      smtp_auth_password: 'ttbfyakojbdlzazn'
+      smtp_from: 'abc@gmail.com'
+      smtp_auth_username: 'abc@gmail.com'
+      smtp_auth_password: 'xxxxxxxxxxxxxxxx'
 
     route:
       receiver: email
@@ -12,4 +12,4 @@ alertmanager:
     receivers:
     - name: email
       email_configs:
-      - to: 'bsanket790@gmail.com'
+      - to: 'abc@gmail.com'
